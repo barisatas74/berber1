@@ -119,6 +119,22 @@ function badge(status) {
 function initials(name) { return (name||'').split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2); }
 function fmt(date) { if(!date) return ''; const [y,m,d]=date.split('-'); return `${d}.${m}.${y}`; }
 function today() { return new Date().toISOString().split('T')[0]; }
+function appointmentDateTime(appt) { return new Date(`${appt.date}T${appt.time || '00:00'}`); }
+function getUpcomingAppointments(limit=5) {
+  const now = new Date();
+  return appointments
+    .filter(a => a.status !== 'iptal' && a.status !== 'tamamlandı')
+    .map(a => ({ ...a, _dt: appointmentDateTime(a) }))
+    .filter(a => !Number.isNaN(a._dt.getTime()) && a._dt >= now)
+    .sort((a, b) => a._dt - b._dt)
+    .slice(0, limit);
+}
+function upcomingLabel(apptDay) {
+  const diffDays = Math.floor((new Date(`${apptDay}T00:00`).getTime() - new Date(`${today()}T00:00`).getTime()) / 86400000);
+  if (diffDays === 0) return 'Bugün';
+  if (diffDays === 1) return 'Yarın';
+  return fmt(apptDay);
+}
 
 /* ============================================================
    CONFLICT CHECK
@@ -213,6 +229,28 @@ function renderDashboard() {
   todayList.innerHTML = todayAppts.length
     ? todayAppts.map(a=>`<div class="today-item"><span class="today-item__time">${a.time}</span><span class="today-item__name">${a.name}</span><span class="today-item__service">${a.service}</span>${badge(a.status)}</div>`).join('')
     : '<div class="empty-state">Bugün randevu yok</div>';
+
+  const upcoming = getUpcomingAppointments(5);
+  document.getElementById('upcomingCount').textContent = upcoming.length;
+  document.getElementById('upcomingList').innerHTML = upcoming.length
+    ? upcoming.map((a, index)=>`<div class="mini-row mini-row--upcoming">
+        <div class="user-avatar sm" style="font-size:.6rem">${initials(a.name)}</div>
+        <span class="mini-row__name">${a.name}</span>
+        <span class="mini-row__svc">${a.service}</span>
+        <span class="mini-row__meta">${upcomingLabel(a.date)} ${a.time}</span>
+        ${index === 0 ? '<span class="badge badge--alert">En Yakın</span>' : badge(a.status)}
+      </div>`).join('')
+    : '<div class="empty-state">Yaklaşan randevu bulunmuyor</div>';
+
+  const nextApptAlert = document.getElementById('nextApptAlert');
+  if (upcoming.length) {
+    const nextAppt = upcoming[0];
+    document.getElementById('nextApptAlertTitle').textContent = `${nextAppt.name} - ${nextAppt.service}`;
+    document.getElementById('nextApptAlertText').textContent = `${upcomingLabel(nextAppt.date)} saat ${nextAppt.time} için ${nextAppt.barber} ile planlı randevu.`;
+    nextApptAlert.style.display = '';
+  } else {
+    nextApptAlert.style.display = 'none';
+  }
 
   // Bar chart
   const days=[];

@@ -370,6 +370,55 @@ ul { list-style: none; }
 }
 
 /* ============================================================
+   DASHBOARD ALERT
+   ============================================================ */
+.appointment-alert {
+  margin-bottom: 20px;
+  padding: 18px 20px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(251,146,60,.35);
+  background:
+    linear-gradient(135deg, rgba(251,146,60,.16), rgba(201,168,76,.08)),
+    var(--dark-3);
+  box-shadow: 0 14px 32px rgba(0,0,0,.18);
+}
+
+.appointment-alert__body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.appointment-alert__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(251,146,60,.18);
+  color: var(--orange);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.appointment-alert strong {
+  display: block;
+  font-size: 1.05rem;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.appointment-alert p {
+  color: var(--text-2);
+  font-size: .9rem;
+  line-height: 1.5;
+}
+
+/* ============================================================
    KPI CARDS
    ============================================================ */
 .kpi-grid {
@@ -462,6 +511,11 @@ ul { list-style: none; }
   font-weight: 700;
   padding: 3px 10px;
   border-radius: 20px;
+}
+
+.card__badge--alert {
+  background: rgba(251,146,60,.16);
+  color: var(--orange);
 }
 
 .card__link {
@@ -604,6 +658,21 @@ canvas { display: block; }
 
 .mini-row__name { flex: 1; font-weight: 500; color: var(--white); }
 .mini-row__svc  { color: var(--text-3); flex: 1; }
+.mini-row__meta {
+  color: var(--text-3);
+  font-size: .74rem;
+  white-space: nowrap;
+}
+
+.mini-row--upcoming {
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.02);
+}
+
+.mini-row--upcoming:first-child {
+  border-color: rgba(251,146,60,.28);
+  background: linear-gradient(135deg, rgba(251,146,60,.09), rgba(255,255,255,.02));
+}
 
 /* ============================================================
    LINE CHART
@@ -781,6 +850,7 @@ canvas { display: block; }
 .badge--confirmed { background: rgba(52,211,153,.15);  color: #34d399; }
 .badge--done      { background: rgba(129,140,248,.15); color: #818cf8; }
 .badge--cancel    { background: rgba(248,113,113,.15); color: #f87171; }
+.badge--alert     { background: rgba(251,146,60,.16); color: var(--orange); }
 
 /* ACTION BUTTONS */
 .action-btns {
@@ -1306,6 +1376,7 @@ textarea.admin-input { resize: vertical; }
   .sidebar.open { transform: translateX(0); }
   .main { margin-left: 0; }
   .sidebar-toggle { display: flex; }
+  .appointment-alert__body { align-items: flex-start; }
   .dash-grid { grid-template-columns: 1fr; }
   .kpi-grid { grid-template-columns: repeat(2, 1fr); }
   .services-grid { grid-template-columns: 1fr; }

@@ -72,6 +72,16 @@
           <div><h1>Hoş Geldiniz 👋</h1><p class="page-sub" id="dashGreeting"></p></div>
           <button class="btn btn--primary" id="quickApptBtn">+ Hızlı Randevu</button>
         </div>
+        <div class="appointment-alert" id="nextApptAlert" style="display:none">
+          <div class="appointment-alert__badge">Yaklaşan 1. Randevu</div>
+          <div class="appointment-alert__body">
+            <div>
+              <strong id="nextApptAlertTitle">Sıradaki randevu</strong>
+              <p id="nextApptAlertText"></p>
+            </div>
+            <a href="#" class="btn btn--ghost" data-page="appointments">Randevulara Git</a>
+          </div>
+        </div>
         <div class="kpi-grid">
           <div class="kpi-card"><div class="kpi-card__icon" style="background:rgba(201,168,76,.15);color:#c9a84c">📅</div><div class="kpi-card__body"><span class="kpi-val" id="kpiTotal">0</span><span class="kpi-label">Toplam Randevu</span></div></div>
           <div class="kpi-card"><div class="kpi-card__icon" style="background:rgba(52,211,153,.15);color:#34d399">⏳</div><div class="kpi-card__body"><span class="kpi-val" id="kpiPending">0</span><span class="kpi-label">Bekleyen</span></div></div>
@@ -82,6 +92,7 @@
           <div class="card"><div class="card__header"><h3>Bugünün Randevuları</h3><span class="card__badge" id="todayCount">0</span></div><div class="today-list" id="todayList"></div></div>
           <div class="card"><div class="card__header"><h3>Haftalık Randevular</h3></div><div class="bar-chart" id="barChart"></div></div>
           <div class="card"><div class="card__header"><h3>Hizmet Dağılımı</h3></div><div class="donut-wrap"><canvas id="donutChart" width="180" height="180"></canvas><div class="donut-legend" id="donutLegend"></div></div></div>
+          <div class="card"><div class="card__header"><h3>Yaklaşan Randevular</h3><span class="card__badge card__badge--alert" id="upcomingCount">0</span></div><div class="mini-table" id="upcomingList"></div></div>
           <div class="card"><div class="card__header"><h3>Son Randevular</h3><a href="#" class="card__link" data-page="appointments">Tümü →</a></div><div class="mini-table" id="recentList"></div></div>
         </div>
       </div>
