@@ -49,6 +49,11 @@ body.light-theme .data-table td, body.light-theme .data-table th { color:inherit
 body.light-theme .admin-input { background:#f8f8f8; color:#1e293b; border-color:rgba(0,0,0,.12); }
 body.light-theme .filter-search, body.light-theme .filter-select { background:#ffffff; color:#1e293b; border-color:rgba(0,0,0,.12); }
 body.light-theme .modal { background:#ffffff; }
+body.light-theme .admin-input option,
+body.light-theme .filter-select option {
+  background: #ffffff;
+  color: #1e293b;
+}
 body.light-theme .act-btn { background:rgba(0,0,0,.06); color:#475569; }
 body.light-theme .kpi-card, body.light-theme .svc-card, body.light-theme .staff-card, body.light-theme .review-card { background:#ffffff; }
 body.light-theme .today-item { background:rgba(0,0,0,.03); }
@@ -1100,6 +1105,12 @@ canvas { display: block; }
 }
 
 .admin-input::placeholder { color: var(--text-3); }
+
+.admin-input option,
+.filter-select option {
+  background: var(--dark-3);
+  color: var(--text);
+}
 
 textarea.admin-input { resize: vertical; }
 
