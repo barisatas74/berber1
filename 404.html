@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sayfa Bulunamadı | Klasik Berber</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✂</text></svg>" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',sans-serif;background:#0d0d0d;color:#e2e8f0;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;
+      background-image:url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1600&q=40&auto=format&fit=crop');
+      background-size:cover;background-position:center;}
+    .overlay{position:fixed;inset:0;background:rgba(0,0,0,.82);}
+    .content{position:relative;z-index:1;max-width:480px;}
+    .icon{font-size:5rem;margin-bottom:24px;display:block;filter:drop-shadow(0 0 40px rgba(201,168,76,.5));}
+    h1{font-family:'Playfair Display',serif;font-size:clamp(5rem,15vw,8rem);font-weight:700;color:#c9a84c;line-height:1;margin-bottom:8px;}
+    h2{font-family:'Playfair Display',serif;font-size:1.8rem;color:#fff;margin-bottom:16px;}
+    p{color:rgba(255,255,255,.55);font-size:1rem;line-height:1.7;margin-bottom:32px;}
+    .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+    a{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:50px;font-size:.95rem;font-weight:600;text-decoration:none;transition:.2s ease;}
+    .btn-primary{background:linear-gradient(135deg,#c9a84c,#e8c96a);color:#0d0d0d;box-shadow:0 4px 20px rgba(201,168,76,.3);}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,168,76,.5);}
+    .btn-ghost{border:2px solid rgba(201,168,76,.5);color:#c9a84c;}
+    .btn-ghost:hover{background:rgba(201,168,76,.1);}
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="content">
+    <span class="icon">✂</span>
+    <h1>404</h1>
+    <h2>Sayfa Bulunamadı</h2>
+    <p>Aradığınız sayfa taşınmış, silinmiş ya da hiç var olmamış olabilir.<br/>Endişelenmeyin, ana sayfadan devam edebilirsiniz.</p>
+    <div class="btns">
+      <a href="index.html" class="btn-primary">🏠 Ana Sayfaya Dön</a>
+      <a href="index.html#randevu" class="btn-ghost">📅 Randevu Al</a>
+    </div>
+  </div>
+</body>
+</html>
